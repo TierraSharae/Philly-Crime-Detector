@@ -45,6 +45,8 @@ public class Geocoder {
 	JSONObject jObj = new JSONObject(responseString);
 	JSONArray results = jObj.getJSONArray("results");
 	JSONObject resultsObj = results.getJSONObject(0);
+	String formatted_address = results.getJSONObject(0).getString("formatted_address");
+
 	JSONObject geometry = resultsObj.getJSONObject("geometry");
 	JSONObject location = geometry.getJSONObject("location");
 	double lat = location.getDouble("lat");
@@ -52,6 +54,9 @@ public class Geocoder {
 
 	System.out.println("lat = " +lat);
 	System.out.println("lng = "+ lng);
+	if(!formatted_address.contains("Philadelphia")){
+	    System.out.println("not in phl");
+	}
 
 	in.close();
 
