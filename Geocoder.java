@@ -9,7 +9,9 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.Scanner;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Geocoder {
 
@@ -39,21 +41,19 @@ public class Geocoder {
 	    response.append(inputLine + "\n");     
 	}
 	String responseString = response.toString();
-	//JSONObject jObj = new JSONObject(responseString);
-	String []locationLat = responseString.split("location");
-	String []latArray = locationLat[1].split("lat\" : ");
-	String []latArray2 = latArray[1].split(",");
-	double lat = Double.valueOf(latArray2[0]);
-	System.out.println("lat = " +lat);
 
-	String []locationLng = responseString.split("location");
-	String []lngArray = locationLng[1].split("lng\" : ");
-	String []lngArray2 = lngArray[1].split(" ");
-	double lng = Double.valueOf(lngArray2[0]);
+	JSONObject jObj = new JSONObject(responseString);
+	JSONArray results = jObj.getJSONArray("results");
+	JSONObject resultsObj = results.getJSONObject(0);
+	JSONObject geometry = resultsObj.getJSONObject("geometry");
+	JSONObject location = geometry.getJSONObject("location");
+	double lat = location.getDouble("lat");
+	double lng = location.getDouble("lng");
+
+	System.out.println("lat = " +lat);
 	System.out.println("lng = "+ lng);
 
 	in.close();
-
 
     }
 
