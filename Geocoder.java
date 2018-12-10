@@ -17,13 +17,12 @@ public class Geocoder {
 
     public static void main(String[] args) throws IOException, JSONException {
 
-	System.out.println("please enter an address:");
+	System.out.print("Where are you? ");
 	Scanner scan = new Scanner(System.in);
 	String address = scan.nextLine();
 	try {
 	    address = URLEncoder.encode(address, "UTF-8");
 	} catch (UnsupportedEncodingException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
 
@@ -81,7 +80,6 @@ public class Geocoder {
 	}
 
 	System.out.println("zone = " +zone);
-
 	in.close();
 
     }
