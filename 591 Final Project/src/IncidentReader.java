@@ -12,48 +12,48 @@ import java.util.Scanner;
  */
 
 public class IncidentReader {
-	
-	//instance variables
-			File fileName;	
-			
-			//constructor
-			IncidentReader(String fileName) {
-			
-				this.fileName = new File(fileName);
-						
-			}
 
-			//methods
-		
-			public ArrayList<CrimeIncident> readIncidentFile() {
-				
-				ArrayList<CrimeIncident> crimes = new ArrayList<>();		
-										
-					try  {
-						Scanner scan= new Scanner(new File("new_data_grid.csv"));
-						scan.nextLine();	
-					    while (scan.hasNext()) {			
-					    	String incidentLine = scan.nextLine();
+    //instance variables
+    File fileName;	
 
-					    	String[] crimeInfo = incidentLine.split(",");		   
+    //constructor
+    IncidentReader(String fileName) {
 
-					    	int hour = Integer.parseInt(crimeInfo[0]);
-					    	int zone = Integer.parseInt(crimeInfo[1]);
-					    	
-					    	CrimeIncident incident = new CrimeIncident(hour, zone); 
-					    	
-					    	crimes.add(incident);
-					    	
-					    	Collections.sort(crimes, CrimeIncident.ZoneComparator);		    			    	
-					    	Collections.sort(crimes, CrimeIncident.TimeComparator);
-					    }
-					    scan.close();
-					 } catch(IOException e) {
-						  e.printStackTrace();
-						  
-					 	}
-					   
-				return crimes;
-			}
+	this.fileName = new File(fileName);
+
+    }
+
+    //methods
+
+    public ArrayList<CrimeIncident> readIncidentFile() {
+
+	ArrayList<CrimeIncident> crimes = new ArrayList<>();		
+
+	try  {
+	    Scanner scan= new Scanner(new File("new_data_grid.csv"));
+	    scan.nextLine();	
+	    while (scan.hasNext()) {			
+		String incidentLine = scan.nextLine();
+
+		String[] crimeInfo = incidentLine.split(",");		   
+
+		int hour = Integer.parseInt(crimeInfo[0]);
+		int zone = Integer.parseInt(crimeInfo[1]);
+
+		CrimeIncident incident = new CrimeIncident(hour, zone); 
+
+		crimes.add(incident);
+
+		Collections.sort(crimes, CrimeIncident.ZoneComparator);		    			    	
+		Collections.sort(crimes, CrimeIncident.TimeComparator);
+	    }
+	    scan.close();
+	} catch(IOException e) {
+	    e.printStackTrace();
+
+	}
+
+	return crimes;
+    }
 
 }
