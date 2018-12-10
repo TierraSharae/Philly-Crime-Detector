@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import org.json.JSONObject;
  *  this class computes all the possible probabilities of crimes then stores the value in a 2D array 
  *  so the user may retrieve results quickly from their given input
  *  
- * @author TamaraPrabhakar
+ * @author TamaraPrabhakar, TierraSharae
  *
  */
 
@@ -28,19 +29,13 @@ public class IncidentReporter {
     public static void main(String[] args) throws FileNotFoundException, JSONException, IOException {
 	System.out.print("Where are you? ");
 	Scanner scan = new Scanner(System.in);
-	String address = scan.nextLine();
+	String addressRaw = scan.nextLine();
+	String address = null;
 	try {
-	    address = URLEncoder.encode(address, "UTF-8"); 
+	    address = URLEncoder.encode(addressRaw, "UTF-8"); 
 	} catch (UnsupportedEncodingException e) {
 	    e.printStackTrace();
 	}
-	System.out.print("Using \"Military Time\", what time is it? (hh:mm)");
-	Scanner scanTime = new Scanner(System.in);
-	String timeString = scanTime.nextLine();
-	String [] timeArr=timeString.split(":");
-	int time = Integer.valueOf(timeArr[0]);
-	System.out.println(time);
-	System.out.println("Calculating likelihood of violent crime...");
 
 	URL oracle = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" +address+ "&key=" +SecretFile.key);
 	URLConnection yc = oracle.openConnection();
@@ -95,6 +90,17 @@ public class IncidentReporter {
 
 	//System.out.println("zone = " +zone);
 	in.close();
+
+	System.out.print("Using \"Military Time,\" what time is it? (hh:mm) ");
+	Scanner scanTime = new Scanner(System.in);
+	String timeString = scanTime.nextLine();
+	String [] timeArr=timeString.split(":");
+	int time = Integer.valueOf(timeArr[0]);
+	if(time > 24) {
+	    System.out.println("The time you entered is invalid.");
+	    return;
+	}
+	System.out.println("Calculating likelihood of violent crime at " +addressRaw+ " at " +timeString +"...");
 
 	IncidentReader ir = new IncidentReader("new_data_grid.csv");
 	ArrayList<CrimeIncident> crimes = ir.readIncidentFile();
