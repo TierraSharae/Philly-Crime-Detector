@@ -1,0 +1,122 @@
+---
+title: "PhillyZones"
+author: "Beatriz Go"
+date: "12/8/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+getwd()
+setwd("/Users/beatrizgo/Dropbox/CIT391/HW06")
+getwd()
+require(dplyr)
+require(readr)
+
+knitr::opts_chunk$set(echo = TRUE)
+
+## replace incidents_part1_part2.csv with your file
+FILE_LOC <- "incidents_part1_part2.csv"
+## see how many clusters are needed in that area to be able to seperate said area into buildings 
+NUMBER_OF_CLUSTERS <- 15
+
+## zoom to see map at a bit higher than building level. change if necessary but seems unlikely. 
+ZOOM <- 13
+
+#read file 
+data <- read_csv(FILE_LOC)
+```
+
+```{r}
+#make the file more catered towards our needs, select only necessary columns (the_geom, lat, lng, hour_, dispatch_date, text_general_code)
+new_data <- data %>%
+  select(the_geom, lat, lng, hour_, dispatch_date, text_general_code) 
+
+#filter out non-violent crimes
+new_data <-new_data %>%
+  filter(text_general_code != "Vandalism/Criminal Mischief",
+         text_general_code != "Fraud",
+         text_general_code != "Narcotic / Drug Law Violations",
+         text_general_code != "Receiving Stolen Property",
+         text_general_code != "Gambling Violations",
+         text_general_code != "Recovered Stolen Motor Vehicle", 
+         text_general_code != "Liquor Law Violations",
+         text_general_code != "Embezzlement",
+         text_general_code != "Prostitution and Commercialized Vice"
+         )
+
+# filter out the specific day in the year. Change from YYYY-MM-DD to YYYY
+new_data$dispatch_date <- substr(new_data$dispatch_date, 0, 4)
+
+# filter out data and only include report data from 2017-2018
+new_data_filtered <- new_data %>%
+  filter(dispatch_date != "2006", dispatch_date != "2007", dispatch_date != "2008", dispatch_date != "2009", dispatch_date != "2010", dispatch_date != "2011", dispatch_date != "2012", dispatch_date != "2013", dispatch_date != "2014", dispatch_date != "2015", dispatch_date != "2016")
+
+
+
+```
+
+```{r}
+#create a grid system 
+
+#remove incomplete rows
+new_data_grid <- na.omit(new_data_filtered)
+
+#create the grids 1-10. using the following coordinates
+new_data_grid <- new_data_grid %>%
+  mutate(geo = ifelse(lat < 40.140689 & lat > 40.089990 & lng > -75.071930 & lng < -74.952492, 1,
+                      ifelse(lat < 40.089990 & lat > 40.032053 & lng > -75.012725 & lng < -74.955568, 2,
+                             ifelse(lat < 40.089990 & lat > 40.032053 & lng > -75.012725 & lng < -75.071930, 3,
+                                    ifelse(lat < 40.089990 & lat > 40.032053 & lng > -75.186205 & lng < -75.071930, 4,
+                                           ifelse(lat < 40.089990 & lat > 40.032053 & lng > -75.268087 & lng < -75.186205, 5,
+                                                  ifelse(lat < 40.032053 & lat > 39.963886 & lng > -75.073577 & lng < -75.004771, 6,
+                                                         ifelse(lat < 40.032053 & lat > 39.963886 & lng > -75.198035 & lng < -75.073577, 7,
+                                                                ifelse(lat < 40.032053 & lat > 39.963886 & lng > -75.281930 & lng < -75.198035, 8,
+                                                                       ifelse(lat < 39.963886 & lat > 39.869780 & lng > -75.200314 & lng < -75.130312, 9, 10
+                                                                       
+                                                  ))))))))))
+                   
+#export the file
+write.csv(new_data_grid,'new_data_grid.csv')
+```
+
+
+
+## KMEANS
+reqs <- new_data_filtered[,c('lat','lng')]
+set.seed(2)
+
+require(ClusterR)
+km = kmeans(na.omit(reqs),NUMBER_OF_CLUSTERS)
+reqs<- na.omit(reqs)
+reqs$geo <- km$cluster
+names(reqs) <- c("lat","lng","geo")
+
+require(ggplot2)
+require(ggmap)
+remove.packages(c("ggplot2", "data.table"))
+install.packages('Rcpp', dependencies = TRUE)
+install.packages('ggplot2', dependencies = TRUE)
+install.packages('data.table', dependencies = TRUE)
+
+
+if(!requireNamespace("devtools")) install.packages("devtools")
+devtools::install_github("dkahle/ggmap", ref = "tidyup")
+register_google(key = "AIzaSyAkYye5gFOqzutUFrjlJzaM44ykpIzZoUM")
+ggmap(get_googlemap())
+
+
+
+new_data_na <- na.omit(new_data_filtered)
+final_data <- new_data_na
+final_data$geo <- km$cluster
+write.csv(final_data,'final_data.csv')
+
+
+
+
+
+final_data <- final_data %>% 
+  select(lat, lng, geo)
+
+
+#ggmap(get_map(location = "philadelphia", maptype = 'roadmap', zoom = 15)) + geom_point(aes(x = lng, y= lat, color = geo), size = 2, data = reqs, alpha = 0.05) + scale_color_gradientn(colours=rainbow(23)) + geom_text(data=as.data.frame(final_data$geo), aes(x = lng, y = lat, label=rownames(final_data$geo)))
