@@ -100,7 +100,8 @@ public class IncidentReporter {
 	    System.out.println("The time you entered is invalid.");
 	    return;
 	}
-	System.out.println("Calculating likelihood of violent crime at " +addressRaw+ " at " +timeString +"...");
+
+	System.out.println("Calculating relative likelihood of violent crime for " +addressRaw+ " in the " +time+" o'clock hour...");
 
 	IncidentReader ir = new IncidentReader("new_data_grid.csv");
 	ArrayList<CrimeIncident> crimes = ir.readIncidentFile();
@@ -121,7 +122,24 @@ public class IncidentReporter {
 	//returning percentage output from user input
 	DecimalFormat df = new DecimalFormat("#%");
 	System.out.println(df.format(crimeMap[time][zone]));
-
+	if((crimeMap[time][zone])*100 < 5){
+	    System.out.println("This means "+addressRaw+ " is very safe in the " +time+" o'clock hour.");
+	}
+	if((crimeMap[time][zone])*100 > 5 && (crimeMap[time][zone])*100 < 10){
+	    System.out.println("This means "+addressRaw+ " is safe in the " +time+" o'clock hour.");
+	}
+	if((crimeMap[time][zone])*100 >= 10 && (crimeMap[time][zone])*100 < 20){
+	    System.out.println("This means "+addressRaw+ " is pretty safe in the " +time+" o'clock hour.");
+	}
+	if((crimeMap[time][zone])*100 >= 20 && (crimeMap[time][zone])*100 < 30){
+	    System.out.println("This means "+addressRaw+ " is relatively unsafe in the " +time+" o'clock hour.");
+	}
+	if((crimeMap[time][zone])*100 >= 30 && (crimeMap[time][zone])*100 < 40){
+	    System.out.println("This means "+addressRaw+ " is relatively unsafe in the " +time+" o'clock hour.");
+	}
+	if((crimeMap[time][zone])*100 > 40){
+	    System.out.println("This means "+addressRaw+ " is pretty unsafe in the " +time+" o'clock hour.");
+	}
     }
 
 }
