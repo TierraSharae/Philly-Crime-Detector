@@ -26,7 +26,9 @@ import org.json.JSONObject;
 
 public class IncidentReporter {
 
+
     public static void main(String[] args) throws FileNotFoundException, JSONException, IOException {
+
 	System.out.print("Where are you? ");
 	Scanner scan = new Scanner(System.in);
 	String addressRaw = scan.nextLine();
@@ -57,8 +59,8 @@ public class IncidentReporter {
 	JSONObject location = geometry.getJSONObject("location");
 	double lat = location.getDouble("lat");
 	double lng = location.getDouble("lng");
-	int zone = 0;
 
+	int zone = 0;
 
 	if (lat < 40.140689 && lat > 40.089990 && lng > -75.071930 && lng < -74.952492){ 
 	    zone =  1;
@@ -87,8 +89,6 @@ public class IncidentReporter {
 		return;
 	    }
 	}
-
-	//System.out.println("zone = " +zone);
 	in.close();
 
 	System.out.print("Using \"Military Time,\" what time is it? (hh:mm) ");
@@ -96,7 +96,7 @@ public class IncidentReporter {
 	String timeString = scanTime.nextLine();
 	String [] timeArr=timeString.split(":");
 	int time = Integer.valueOf(timeArr[0]);
-	if(time > 24) {
+	if(time > 23) {
 	    System.out.println("The time you entered is invalid.");
 	    return;
 	}
@@ -114,9 +114,7 @@ public class IncidentReporter {
 	    for (int j = 0; j < ZONES; j++) {
 
 		crimeMap[i][j] = incident.getCrimeProbability(i, j);
-
 	    }
-
 	}
 
 	//returning percentage output from user input
@@ -140,6 +138,6 @@ public class IncidentReporter {
 	if((crimeMap[time][zone])*100 > 40){
 	    System.out.println("This means "+addressRaw+ " is pretty unsafe in the " +time+" o'clock hour.");
 	}
-    }
 
+    }
 }
