@@ -4,7 +4,7 @@
 Description (4-5 sentences):
 
 
-The purpose of our program is to project the likelihood of crime for a user based on their location and the time of day. Given this information, they can navigate to safer areas if the probability is relatively high. We use Google API to convert the user’s address long/lat coordinates to determine their zone placement. Then we cleaned Philadelphia Police Department crime data to include only violent crimes from 2017 onwards, separated the data into zones to coordinate with the user’s location, and sorted the data based on zone and time of day to determine the percentage likelihood of a violent crime occurring. 
+The purpose of our program is to project the likelihood of crime for a user based on their location and the time of day. Given this information, they can navigate to safer areas if the probability is relatively high. We use Google API to convert the user’s address long/lat coordinates to determine their zone placement. Then we cleaned Philadelphia Police Department crime data to include only violent crimes from 2017 onward, separated the data into zones to coordinate with the user’s location, and sorted the data based on zone and time of day to determine the percentage likelihood of a violent crime occurring. 
 
 
 
@@ -15,7 +15,7 @@ Work Distribution:
 Tamara: crime detection algorithm, Junits
 
 
-Tierra: Google API, manage git conflicts, Junits
+Tierra: Google API, crime analysis algorithm, manage git conflicts, Junits
 
 
 Trixie: Zone distributions and data cleaning, Junits
