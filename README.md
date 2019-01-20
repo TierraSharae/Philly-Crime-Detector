@@ -8,3 +8,5 @@ More than 228,000 crimes in the following categories are included in the analysi
 
 Aggravated Assault Firearm, Arson, Burglary Non-Residential, Burglary Residential, Disorderly Conduct, Driving Under the Influence, Forgery and Counterfeiting, Homicide, Motor Vehicle Theft, Offenses Against Family and Children, Other Assaults
 Other Sex Offenses (Not Commercialized), Public Drunkenness, Rape, Robbery Firearm, Robbery No Firearm, Theft from Vehicle,  Thefts, Weapon Violation
+
+## Getting Started
