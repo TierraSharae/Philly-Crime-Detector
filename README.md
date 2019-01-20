@@ -55,4 +55,12 @@ When prompted, enter a time, using the 24-hour clock (Military Time). Acceptable
 ### 4. Understanding Results
 The average percentage of crime across the entire dataset is roughly 10 percent. The highest percentage of crime across all times and zones is 42, and the lowest is 0. This range is the relative benchmark for criminal activity across the city. For instance, if the percentage is in the 30-40 range, Philly Crime Detector considers the likelihood of crime to be relatively high, whereas if the results are less than 5 percent, the zone and time are considered very safe relative to others.
 
-Now, you're ready to explore the City of Brotherly Love safely! Enjoy!
+*Now, you're ready to explore the City of Brotherly Love safely! Enjoy!*
+
+## Developers
+Trixie Go
+Tamara Prabhakar
+[Tierra Sharae](https://tierrasharae.github.io/)
+
+## Versions
+Philly Crime Detector's initial release runs at the command line-level in an integrated development environment. Tierra is currently developing a graphical user interface for its second version! 
