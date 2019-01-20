@@ -2,7 +2,7 @@
 
 ![GIF](https://github.com/TierraSharae/Philly-Crime-Detector/blob/master/img/demo.gif)
 
-Philly Crime Detector is a Java application that calculates the likelihood of crime for a user based on his or her location and the time of day using Philadelphia Police Department crime incidents from 2017 onward. More than 228,000 violent crimes were included in the analysis.
+Philly Crime Detector is a Java application that calculates the likelihood of crime for a user based on his or her location and the time of day using Philadelphia Police Department crime incidents from 2017 onward. More than 228,000 violent crimes were included in the analysis. An in-depth description of the algorithm, crimes, and application usage is included in the [User Manual](https://github.com/TierraSharae/PhillyCrimeDetector/blob/master/User%20Manual.pdf).
 
 ## Getting Started
 The following sections will guide you through the process of installing and running Philly Crime Detector.
