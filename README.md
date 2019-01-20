@@ -9,11 +9,12 @@ The following sections will guide you through the process of installing and runn
 
 ### Installation and Setup
 Please, ensure that you have the following:
-* Eclipse: Philly Crime Detector is optimized to run at the command line-level in the [Eclipse IDE](https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-java-developers). However, it can be run in other Java IDEs. 
-* Java: Additionally, please ensure that you have [Java](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) installed on your computer.
-* Philly Crime Detector: Download the program’s src folder. It contains five classes: CrimeIncident.java, IncidentAnalysis.java, IncidentReader.java, IncidentReporter.java, and the configuration class SecretFile.java. 
-* Crime Data: Download the file “data.csv” and ensure that it is stored in the same folder that contains the src folder. 
-* Java-json.jar
+* [Java](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* [Eclipse IDE](https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-java-developers) or a comparable Java IDE
+* Philly Crime Detector: Download the program’s [src](https://github.com/TierraSharae/PhillyCrimeDetector) folder. It contains five classes: CrimeIncident.java, IncidentAnalysis.java, IncidentReader.java, IncidentReporter.java, and the configuration class SecretFile.java. 
+* Crime Data: Download the file “[data.csv]”(https://github.com/TierraSharae/PhillyCrimeDetector) and ensure that it is stored in the same folder that contains the src folder. 
+* [Java-json.jar](https://github.com/stleary/JSON-java) or a comparable JSON-java parser. In Java, configure your build path with this file by doing the following:
+```right click any class > Build Path > Configure Build Path. Under "Libraries," > Add External JARS... > select Java-json.jar > Apply and Close ```
 
 ### Configuration
 Philly Crime Detector utilizes Google’s Geocoding API. In order to use this software, the user must first obtain an API key. In SecretFile.java, replace `“API KEY GOES HERE”` with the actual key. The developers’ key was omitted from the code for security reasons.
