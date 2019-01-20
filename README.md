@@ -58,9 +58,9 @@ The average percentage of crime across the entire dataset is roughly 10 percent.
 *Now, you're ready to explore the City of Brotherly Love safely! Enjoy!*
 
 ## Developers
-Trixie Go
-Tamara Prabhakar
-[Tierra Sharae](https://tierrasharae.github.io/)
+* Trixie Go
+* Tamara Prabhakar
+* [Tierra Sharae](https://tierrasharae.github.io/)
 
 ## Versions
 Philly Crime Detector's initial release runs at the command line-level in an integrated development environment. Tierra is currently developing a graphical user interface for its second version! 
