@@ -23,7 +23,7 @@ Philly Crime Detector utilizes Google’s Geocoding API. In order to use this so
 Now, you are ready to run the program using the following instructions.
 
 ### 1. Running Program
-Launch the program by pressing the green “run” button in the Eclipse IDE. ![](https://github.com/TierraSharae/PhillyCrimeDetector/blob/master/img/run.png)
+Launch the program by pressing the green “run” button in the Eclipse IDE.
 
 ### 2. Entering Location
 When prompted, enter your location. The location does not have to be a formal address; for instance, it can be a Philadelphia neighborhood, zip code, intersection or landmark.
