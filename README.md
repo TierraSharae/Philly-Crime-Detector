@@ -19,7 +19,7 @@ Please, ensure that you have the following:
 ```right click any class > Build Path > Configure Build Path. Under "Libraries," > Add External JARS... > select Java-json.jar > Apply and Close ```
 
 ### Configuration
-Philly Crime Detector utilizes Google’s Geocoding API. In order to use this software, the user must first [obtain an API key](https://developers.google.com/maps/documentation/geocoding/start#get-a-key). In SecretFile.java, replace `“API KEY GOES HERE”` with the actual key. The developers’ key was omitted from the code for security reasons.
+Philly Crime Detector utilizes Google’s Geocoding API. In order to use this service, you must first [obtain an API key](https://developers.google.com/maps/documentation/geocoding/start#get-a-key). In SecretFile.java, replace `“API KEY GOES HERE”` with the actual key. The developers’ key was omitted from the code for security reasons.
 
 ## Usage
 Now, you are ready to run the program using the following instructions.
