@@ -13,7 +13,7 @@ Please, ensure that you have the following:
 * [Eclipse IDE](https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-java-developers) or a comparable Java IDE
 * Philly Crime Detector: Download the program’s [src](https://github.com/TierraSharae/PhillyCrimeDetector) folder. It contains five classes: CrimeIncident.java, IncidentAnalysis.java, IncidentReader.java, IncidentReporter.java, and the configuration class SecretFile.java. 
 * Crime Data: Download the file ["data.csv"](https://github.com/TierraSharae/PhillyCrimeDetector) and ensure that it is stored in the same folder that contains the src folder. 
-* [Java-json.jar](https://github.com/stleary/JSON-java) or a comparable JSON-java parser. In Java, configure your build path with this file by doing the following:
+* [Java-json.jar](https://github.com/stleary/JSON-java) or a comparable JSON-java parser. In Eclipse, configure your build path with this file by doing the following:
 ```right click any class > Build Path > Configure Build Path. Under "Libraries," > Add External JARS... > select Java-json.jar > Apply and Close ```
 
 ### Configuration
