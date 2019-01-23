@@ -60,8 +60,8 @@ The average percentage of crime across the entire dataset is roughly 10 percent.
 *Now, you're ready to explore the City of Brotherly Love safely! Enjoy!*
 
 ## Developers
-* Trixie Go
-* Tamara Prabhakar
+* [Trixie Go](https://github.com/beatrizgo)
+* [Tamara Prabhakar](https://github.com/019tam)
 * [Tierra Sharae](https://tierrasharae.github.io/)
 
 ## Versions
